@@ -6,20 +6,22 @@ public class AudioScript : MonoBehaviour
 {
     public AudioSource start, run, end;
     
-    public void StartPCNoise() {
+    public void StartSound() {
         StartCoroutine(PCNoiseCoroutine());
     }
     
-    public void EndPCNoise()
+    public void EndSound()
     {
-        if (!run.isPlaying) return;
-        run.Stop();
-        end.Play();
+        if (run != null) {
+            if (!run.isPlaying) return;
+            run.Stop();
+        }
+        if (end != null) end.Play();
     }
 
     IEnumerator PCNoiseCoroutine() {
-        start.Play();
+        if (start != null) start.Play();
         yield return new WaitForSeconds(start.clip.length);
-        run.Play();
+        if (run != null) run.Play();
     }
 }
