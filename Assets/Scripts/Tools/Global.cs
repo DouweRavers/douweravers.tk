@@ -17,6 +17,5 @@ static class Global {
 }
 
 static class DEBUG {
-	public static bool isMobile = false;
-
+	public static bool isMobile = true;
 }
